@@ -21,30 +21,33 @@ st.markdown("""
 <style>
     .main-header {
         font-size: 2.5rem;
-        color: #8B4513;
+        color: #5D4037;
         text-align: center;
         margin-bottom: 0.5rem;
         font-weight: bold;
     }
     .sub-header {
         font-size: 1.1rem;
-        color: #A0522D;
+        color: #6D4C41;
         text-align: center;
         margin-bottom: 2rem;
     }
     .metric-container {
-        background: linear-gradient(90deg, #FFF8DC 0%, #F5DEB3 100%);
+        background: linear-gradient(90deg, #FFFFFF 0%, #FFF9E6 100%);
         padding: 1rem;
         border-radius: 10px;
-        border-left: 4px solid #D2691E;
+        border-left: 4px solid #FF8C42;
         margin: 1rem 0;
+        color: #3E2723;
     }
     .insight-box {
-        background: #FFF8DC;
+        background: #FFFFFF;
         padding: 1.5rem;
         border-radius: 10px;
-        border-left: 4px solid #CD853F;
+        border-left: 4px solid #FF8C42;
         margin: 1rem 0;
+        color: #3E2723;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .stSelectbox > div > div {
         background-color: #ffffff;
@@ -54,8 +57,8 @@ st.markdown("""
         left: 0;
         bottom: 0;
         width: 100%;
-        background-color: #F5DEB3;
-        color: #8B4513;
+        background-color: #5D4037;
+        color: #FFFFFF;
         text-align: center;
         padding: 10px 0;
         font-size: 0.8rem;
