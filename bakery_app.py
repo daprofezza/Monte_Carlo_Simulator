@@ -16,21 +16,29 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS with bakery-themed color scheme
+# Custom CSS with bakery-themed color scheme and improved visibility
 st.markdown("""
 <style>
-    .main-header {
-        font-size: 2.5rem;
-        color: #5D4037;
+    .title-banner {
+        background: linear-gradient(90deg, #FF8C42 0%, #FFB347 50%, #FFD700 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 15px;
         text-align: center;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        border: 3px solid #5D4037;
     }
-    .sub-header {
-        font-size: 1.1rem;
-        color: #6D4C41;
-        text-align: center;
-        margin-bottom: 2rem;
+    .title-text {
+        font-size: 2.8rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        margin-bottom: 0.5rem;
+    }
+    .subtitle-text {
+        font-size: 1.3rem;
+        font-weight: 500;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
     .metric-container {
         background: linear-gradient(90deg, #FFFFFF 0%, #FFF9E6 100%);
@@ -49,8 +57,18 @@ st.markdown("""
         color: #3E2723;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .stSelectbox > div > div {
-        background-color: #ffffff;
+    /* Improved dropdown visibility */
+    .stSelectbox div[data-baseweb="select"] > div {
+        background-color: #FFF9E6 !important;
+        color: #3E2723 !important;
+    }
+    .stSelectbox div[data-baseweb="select"]:hover > div {
+        background-color: #FFE4B5 !important;
+    }
+    /* Selected item in dropdown */
+    .stSelectbox div[data-baseweb="select"] > div > div > div {
+        color: #5D4037 !important;
+        font-weight: 500;
     }
     .footer {
         position: fixed;
@@ -66,9 +84,13 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Header
-st.markdown('<div class="main-header">🍞 SJC Bakery Analytics Suite</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-header">Monte Carlo Simulations for Strategic Decisions</div>', unsafe_allow_html=True)
+# Header with vibrant banner
+st.markdown("""
+<div class="title-banner">
+    <div class="title-text">🍞 SJC Bakery Analytics Suite</div>
+    <div class="subtitle-text">Monte Carlo Simulations for Strategic Decisions</div>
+</div>
+""", unsafe_allow_html=True)
 
 # Initialize session state
 if 'demand_data' not in st.session_state:
