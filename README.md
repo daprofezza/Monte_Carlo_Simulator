@@ -1,4 +1,4 @@
-🍞 SJC Bakery Analytics Suite
+🍞 Bakery Analytics Suite
 Monte Carlo Simulations for Strategic Decisions
 Welcome to the SJC Bakery Analytics Suite, a data-driven decision-support tool designed specifically for bakeries aiming to optimize operations and reduce uncertainty. This suite leverages Monte Carlo simulations to model real-world variables—such as ingredient costs, demand fluctuations, and production times—helping bakery managers make more informed, strategic decisions.
 
