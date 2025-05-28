@@ -523,6 +523,6 @@ else:
 # Footer
 st.markdown("""
 <div class="footer">
-    Developed with 🧡 by J. Inigo Papu Vinodhan, St. Joseph's College, Trichy
+    Web Application |  Developed with 🧡 by J. Inigo Papu Vinodhan, Asst. Prof., BBA Dept., St. Joseph's College, Trichy
 </div>
 """, unsafe_allow_html=True)
