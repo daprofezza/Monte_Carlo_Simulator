@@ -10,61 +10,163 @@ import plotly.express as px
 
 # Set page config
 st.set_page_config(
-    page_title="🍞 SJC Bakery Analytics Suite",
+    page_title="🍞 Artisan Bakery Analytics Suite",
     page_icon="🍞",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Custom CSS for better readability
 st.markdown("""
 <style>
+    /* Main container styling */
+    .stApp {
+        background-color: #f8f9fa;
+    }
+    
+    /* Header styling */
     .main-header {
         font-size: 2.5rem;
-        color: #2c3e50;
+        color: #1a365d;
         text-align: center;
         margin-bottom: 0.5rem;
         font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
+    
     .sub-header {
         font-size: 1.1rem;
-        color: #7f8c8d;
+        color: #4a5568;
         text-align: center;
         margin-bottom: 2rem;
+        font-weight: 500;
     }
-    .metric-container {
-        background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
-        padding: 1rem;
-        border-radius: 10px;
-        border-left: 4px solid #3498db;
-        margin: 1rem 0;
-    }
+    
+    /* Insight boxes with better contrast */
     .insight-box {
-        background: #f8f9fa;
+        background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
         padding: 1.5rem;
-        border-radius: 10px;
-        border-left: 4px solid #27ae60;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         margin: 1rem 0;
+        color: #2d3748;
     }
-    .stSelectbox > div > div {
+    
+    .insight-box h4 {
+        color: #1a365d;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    
+    .insight-box ul {
+        color: #4a5568;
+        line-height: 1.6;
+    }
+    
+    .insight-box li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .insight-box strong {
+        color: #2d3748;
+        font-weight: 600;
+    }
+    
+    /* Sidebar styling */
+    .css-1d391kg {
         background-color: #ffffff;
     }
+    
+    /* Button styling */
+    .stButton > button {
+        background: linear-gradient(90deg, #3182ce 0%, #2c5aa0 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+    
+    .stButton > button:hover {
+        background: linear-gradient(90deg, #2c5aa0 0%, #2a4a8a 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Metric containers */
+    .metric-container {
+        background: #ffffff;
+        padding: 1rem;
+        border-radius: 10px;
+        border-left: 4px solid #3182ce;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        margin: 1rem 0;
+        color: #2d3748;
+    }
+    
+    /* Footer styling */
     .footer {
         position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
-        background-color: #ecf0f1;
-        color: #7f8c8d;
+        background: linear-gradient(90deg, #1a365d 0%, #2c5aa0 100%);
+        color: #ffffff;
         text-align: center;
         padding: 10px 0;
         font-size: 0.8rem;
+        z-index: 999;
+    }
+    
+    /* Radio button styling */
+    .stRadio > div {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 0.5rem;
+        border: 1px solid #e2e8f0;
+    }
+    
+    /* Slider styling */
+    .stSlider > div > div > div > div {
+        background-color: #3182ce;
+    }
+    
+    /* Success message styling */
+    .stSuccess {
+        background-color: #f0fff4;
+        color: #22543d;
+        border: 1px solid #9ae6b4;
+    }
+    
+    /* Info message styling */
+    .stInfo {
+        background-color: #ebf8ff;
+        color: #2c5aa0;
+        border: 1px solid #90cdf4;
+    }
+    
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {
+        background-color: #ffffff;
+        border-radius: 8px;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        color: #4a5568;
+        font-weight: 500;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        color: #3182ce;
+        font-weight: 600;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # Header
-st.markdown('<div class="main-header">🍞 SJC Bakery Analytics Suite</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header">🍞 Artisan Bakery Analytics Suite</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-header">Monte Carlo Simulations for Strategic Decisions</div>', unsafe_allow_html=True)
 
 # Initialize session state
@@ -288,16 +390,16 @@ elif analysis_type == "💰 Cost Analysis":
             
             if change_pct > 10:
                 strategy = "🔴 BUY NOW - Major increase expected"
-                strategy_color = "#e74c3c"
+                strategy_color = "#c53030"
             elif change_pct > 5:
                 strategy = "🟡 CONSIDER BUYING - Moderate increase likely"
-                strategy_color = "#f39c12"
+                strategy_color = "#d69e2e"
             elif change_pct < -5:
                 strategy = "🟢 DELAY PURCHASE - Price decrease expected"
-                strategy_color = "#27ae60"
+                strategy_color = "#38a169"
             else:
                 strategy = "🔵 NEUTRAL - Stable prices"
-                strategy_color = "#3498db"
+                strategy_color = "#3182ce"
             
             st.markdown(f"""
             <div class="insight-box">
@@ -454,7 +556,11 @@ else:
     st.header("📚 User Guide")
     
     st.markdown("""
-    ## 🔬 Monte Carlo Simulation for Bakeries
+    ## 📚 User Guide
+    
+    <div style="background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%); padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); color: #2d3748;">
+    
+    ### 🔬 Monte Carlo Simulation for Bakeries
     
     This analytics suite uses statistical modeling for data-driven bakery decisions.
     
@@ -473,24 +579,26 @@ else:
     - **Benefits**: Calculates optimal staffing levels
     - **Output**: Balances service quality with labor costs
     
-    ## 🎯 How to Use
+    ### 🎯 How to Use
     1. **Select Analysis Type** from the sidebar
     2. **Adjust Parameters** using the sliders and dropdowns
     3. **Click the Simulation Button** to generate forecasts
     4. **Review Charts and Insights** for decision making
     5. **Use 90th Percentile Values** for conservative planning
     
-    ## 💡 Key Tips
+    ### 💡 Key Tips
     - Run simulations weekly for best results
     - Compare scenarios by adjusting parameters
     - Monitor actual vs predicted performance
     - Consider external factors not in the model
     
-    ## 🚀 Advanced Features
+    ### 🚀 Advanced Features
     - Interactive charts with hover details
     - Downloadable results (coming soon)
     - Historical data integration (coming soon)
     - Multi-location analysis (coming soon)
+    
+    </div>
     """)
     
     st.info("💡 **Pro Tip**: Start with the Demand Forecasting to understand your base requirements, then use Cost Analysis for purchasing decisions, and finally optimize with Staff Planning.")
@@ -498,6 +606,7 @@ else:
 # Footer
 st.markdown("""
 <div class="footer">
-    Developed with 🧡 by J. Inigo Papu Vinodhan, St. Joseph's College, Trichy
+    Developed by J. Inigo Papu Vinodhan, St. Joseph's College, Trichy | 
+    Powered by Streamlit & Monte Carlo Simulations
 </div>
 """, unsafe_allow_html=True)
