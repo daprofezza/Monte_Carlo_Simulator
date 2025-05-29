@@ -25,10 +25,3 @@ Evaluating the impact of ingredient price volatility
 Planning capacity expansions or equipment investments
 
 Estimating likelihood of meeting holiday production targets
-
-
-NumPy, SciPy, Pandas (statistical modeling)
-
-Matplotlib, Seaborn, Plotly (data visualization)
-
-Tkinter / Streamlit (GUI options depending on deployment needs)
