@@ -10,7 +10,7 @@ import plotly.express as px
 
 # Set page config
 st.set_page_config(
-    page_title="🍞 SJC Bakery Analytics Suite",
+    page_title="SJC Bakery Analytics Suite",
     page_icon="🍞",
     layout="wide",
     initial_sidebar_state="expanded"
